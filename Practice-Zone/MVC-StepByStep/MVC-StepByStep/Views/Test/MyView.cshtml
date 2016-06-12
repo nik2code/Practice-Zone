@@ -1,0 +1,35 @@
+﻿@using MVC_StepByStep.ViewModels
+@Model EmpListViewModel
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MyView</title>
+</head>
+<body>
+    <div>
+        Hello @Model.UserName : Welcome to mvc - step by step school
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Employee Name</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+
+        @foreach (EmpViewModel item in Model.Employees)
+            {
+            <tr>
+                <td>@item.EmployeeName</td>
+                <td style="background-color:@item.SalaryColor" >@item.Salary</td>
+            </tr>
+            }
+        </table>
+    </body>
+</html>
