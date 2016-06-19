@@ -13,10 +13,7 @@
 </head>
 <body>
     <div>
-        Hello @*@Model.UserName*@ : Welcome to mvc - step by step school
-    </div>
-    <div>
-        <a href="/Employee/AddNew">Add New</a>
+        Hello @Model.UserName : Welcome to mvc - step by step school
     </div>
     <table>
         <thead>
@@ -30,10 +27,9 @@
             {
             <tr>
                 <td>@item.EmployeeName</td>
-                <td style="background-color:@item.SalaryColor">@item.Salary</td>
-                <td><a href="/Employee/DeleteEmployee/@item.EmployeeId" >Delete</a></td>
+                <td style="background-color:@item.SalaryColor" >@item.Salary</td>
             </tr>
-        }
-    </table>
-</body>
+            }
+        </table>
+    </body>
 </html>

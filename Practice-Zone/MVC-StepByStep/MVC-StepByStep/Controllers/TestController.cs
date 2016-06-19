@@ -18,7 +18,7 @@ namespace MVC_StepByStep.Controllers
         }
     }
 
-    public class EmployeeController : Controller
+    public class TestController : Controller
     {
 
         public Customer GetCustomer()
@@ -29,18 +29,17 @@ namespace MVC_StepByStep.Controllers
             return c;
         }
 
-        public ActionResult Index()
+        public ActionResult GetView()
         {
             EmpListViewModel empList = new EmpListViewModel();
 
             blEmployee empBal = new blEmployee();
-            List<Employee> employees = empBal.GetDAEmployees();//.GetEmployees();
+            List<Employee> employees = empBal.GetEmployees();
 
             List<EmpViewModel> empViewModels = new List<EmpViewModel>();
             foreach (Employee item in employees)
             {
                 EmpViewModel empViewModel = new EmpViewModel();
-                empViewModel.EmployeeId = item.EmployeeId;
                 empViewModel.EmployeeName = item.FirstName + " " + item.LastName;
                 empViewModel.Salary = item.Salary;
                 if (item.Salary > 15000)
@@ -51,36 +50,9 @@ namespace MVC_StepByStep.Controllers
             }
 
             empList.Employees = empViewModels;
-            //empList.UserName = "Admin";
+            empList.UserName = "Admin";
 
-            return View("Index", empList);
-        }
-
-        public ActionResult AddNew()
-        {
-            return View("CreateEmployee");
-        }
-
-        public ActionResult SaveEmployee(Employee e, string BtnSubmit)
-        {
-            switch (BtnSubmit)
-            {
-                case "Save Employee":
-                    // return Content(e.FirstName + " | " + e.LastName + " | " + e.Salary);
-                    blEmployee empbl = new blEmployee();
-                    empbl.SaveEmployee(e);
-                    return RedirectToAction("Index");
-                case "Cancel":
-                    return RedirectToAction("Index");
-            }
-            return new EmptyResult();
-        }
-
-        public ActionResult DeleteEmployee(int id)
-        {
-            blEmployee empbl = new blEmployee();
-            empbl.DeleteEmployee(id);
-            return RedirectToAction("Index");
+            return View("MyView", empList);
         }
     }
 }
