@@ -5,6 +5,7 @@ namespace MVC_StepByStep.ViewModels
 {
     public class EmpViewModel
     {
+        public int EmployeeId { get; set; }
         public string EmployeeName { get; set; }
         public int Salary { get; set; }
         public string SalaryColor { get; set; }
